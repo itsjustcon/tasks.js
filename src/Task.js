@@ -7,6 +7,8 @@
 
 import Promise from 'bluebird'
 import isPromise from '@itsjustcon/utils/isPromise'
+//import once from '@itsjustcon/utils/once'
+import once from 'lodash/once'
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
 import { $$rxSubscriber } from 'rxjs/symbol/rxSubscriber'
@@ -58,8 +60,8 @@ class Task {
         if (!this.isRunning) {
             this.isRunning = true;
             const subject = this._subject; // so we don't accidentally trigger the next subject
-            const errorFn = (err) => { this.isRunning = false; subject.error(err); }
-            const completeFn = () => { this.isRunning = false; subject.complete(); }
+            const errorFn = once((err) => { this.isRunning = false; subject.error(err); });
+            const completeFn = once(() => { this.isRunning = false; subject.complete(); });
             const updateAction:Task$ActionUpdater = (val) => { subject.next(val); }
             if (this.name) {
                 console.log(`>> ${this.name}`);
