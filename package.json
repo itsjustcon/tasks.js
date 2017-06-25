@@ -1,5 +1,5 @@
 {
-  "name": "tasks",
+  "name": "node-tasks",
   "version": "0.0.1",
   "description": "A declarative, test-driven framework for organizing what you're doing - written in Node.js",
   "main": "lib/index.js",
