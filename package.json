@@ -6,8 +6,8 @@
   "author": "Connor Grady <conair360@gmail.com> (http://connorgrady.com/)",
   "homepage": "https://github.com/itsjustcon/node-tasks",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/itsjustcon/node-tasks.git"
+    "type": "git",
+    "url": "https://github.com/itsjustcon/node-tasks.git"
   },
   "bugs": {
     "url": "https://github.com/itsjustcon/node-tasks/issues"
