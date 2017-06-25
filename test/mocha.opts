@@ -1,0 +1,5 @@
+--require babel-polyfill
+--compilers js:babel-register,source-map-support/register
+--slow 2000
+--recursive
+--bail
