@@ -6,6 +6,7 @@
  */
 
 import Promise from 'bluebird'
+import isPromise from '@itsjustcon/utils/isPromise'
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
 import { $$rxSubscriber } from 'rxjs/symbol/rxSubscriber'
