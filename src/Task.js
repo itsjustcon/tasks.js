@@ -66,7 +66,13 @@ class Task {
             if (this.name) {
                 console.log(`>> ${this.name}`);
             }
-            const promise = this.executor(updateAction);
+            let promise;
+            try {
+                promise = this.executor(updateAction);
+            } catch (err) {
+                errorFn(err);
+                return this;
+            }
             if (isPromise(promise)) {
                 promise.then(completeFn, errorFn);
                 // TODO: append to the TaskTrace before calling errorFn()
