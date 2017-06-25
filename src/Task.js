@@ -54,14 +54,20 @@ class Task {
     }
 
     run() : this {
-        //this._start();
         if (!this.isRunning) {
             this.isRunning = true;
             const subject = this._subject; // so we don't accidentally trigger the next subject
             const errorFn = (err) => { this.isRunning = false; subject.error(err); }
             const completeFn = () => { this.isRunning = false; subject.complete(); }
             const updateAction:Task$ActionUpdater = (val) => { subject.next(val); }
-            this._start(updateAction).then(completeFn, errorFn);
+            if (this.name) {
+                console.log(`>> ${this.name}`);
+            }
+            const promise = this.executor(updateAction);
+            if (isPromise(promise)) {
+                promise.then(completeFn, errorFn);
+                // TODO: append to the TaskTrace before calling errorFn()
+            } else completeFn();
         }
         return this;
     }
@@ -75,6 +81,9 @@ class Task {
         );
     }
     then(onFulfilled?: (value: any) => any, onRejected?: (error: Error) => any) : Promise {
+        if (!this.isRunning) {
+            this.run();
+        }
         return this.asPromise().then(...arguments);
     }
     catch(onRejected?: (error: Error) => any) : Promise {
@@ -102,21 +111,6 @@ class Task {
     }
     [Symbol.rxSubscriber || $$rxSubscriber]() {
         return this._subject;
-    }
-
-    /**
-     * Internal Methods
-     */
-    async _start(updateAction: Task$ActionUpdater) : Promise {
-        return await this.executor(updateAction);
-    }
-    _stop() : this {
-        throw new Error('Task#_stop() is not implemented!');
-        if (this.isRunning) {
-            this.isRunning = false;
-            this._subject.complete();
-        }
-        return this;
     }
 
 }
