@@ -1,16 +1,16 @@
 {
-  "name": "node-tasks",
+  "name": "tasks.js",
   "version": "0.0.1",
   "description": "A declarative, test-driven framework for organizing what you're doing - written in Node.js",
   "main": "lib/index.js",
   "author": "Connor Grady <conair360@gmail.com> (http://connorgrady.com/)",
-  "homepage": "https://github.com/itsjustcon/node-tasks",
+  "homepage": "https://github.com/itsjustcon/tasks.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/itsjustcon/node-tasks.git"
+    "url": "https://github.com/itsjustcon/tasks.js.git"
   },
   "bugs": {
-    "url": "https://github.com/itsjustcon/node-tasks/issues"
+    "url": "https://github.com/itsjustcon/tasks.js/issues"
   },
   "license": "MIT",
   "directories": {

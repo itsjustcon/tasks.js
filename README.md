@@ -1,4 +1,4 @@
-# node-tasks
+# tasks.js
 A declarative, test-driven framework for organizing what you're doing - written
 in Node.js
 
@@ -8,7 +8,7 @@ here are not yet working. *Follow at your own risk!*
 ## Getting Started
 > TDD in your production code
 
-`node-tasks` is a simple package that pushes a declarative coding style that is
+`tasks.js` is a simple package that pushes a declarative coding style that is
 very similar to TDD.
 
 There are two main concepts:
@@ -24,7 +24,7 @@ readable and makes your [errors](#error-handling) much easier to hunt-down *(mor
 
 ### `task(name, function)`
 ```js
-import { task } from 'node-tasks'
+import { task } from 'tasks.js'
 
 task('Create User', async (action) => {
   action('validate user')
@@ -38,7 +38,7 @@ task('Create User', async (action) => {
 
 ### `tasks(name, functions)`
 ```js
-import { task, tasks } from 'node-tasks'
+import { task, tasks } from 'tasks.js'
 
 await tasks([
   task('', async (action) => {
@@ -125,7 +125,7 @@ just plain interested in how things work, here's a lower-level view of our core:
 ### `Task`
 The class behind `task(...)` which is actually just a shortcut for `new Task(...)`!
 ```js
-import { Task } from 'node-tasks'
+import { Task } from 'tasks.js'
 
 new Task('', async () => {
   // ...
@@ -135,7 +135,7 @@ new Task('', async () => {
 ### `TaskQueue`
 The class behind `tasks(...)` which is actually just a shortcut for `new TaskQueue(...)`!
 ```js
-import { TaskQueue } from 'node-tasks'
+import { TaskQueue } from 'tasks.js'
 
 new TaskQueue('', async () => {
   // ...
@@ -145,11 +145,11 @@ new TaskQueue('', async () => {
 ### `TaskError`
 A sub-class of `Error` (native) that uses [`TaskTrace`](#TaskTrace) instead of `StackTrace` for error-tracing & call-stacks.
 ```js
-import { TaskError } from 'node-tasks'
+import { TaskError } from 'tasks.js'
 ```
 
 ### `TaskTrace`
 This is secretly one of the most useful classes - but you'll likely never need to use it yourself. It is essentially a Stack Trace composed of `Task` and `TaskQueue` objects instead of `StackFrame` objects!
 ```js
-import { TaskTrace } from 'node-tasks'
+import { TaskTrace } from 'tasks.js'
 ```
