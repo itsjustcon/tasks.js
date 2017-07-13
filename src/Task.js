@@ -15,6 +15,11 @@ import { $$rxSubscriber } from 'rxjs/symbol/rxSubscriber';
 
 import TaskError from './TaskError';
 
+const debug = require('debug')('tasks.js:Task');
+
+const ICON_GOOD = '\xe2\x9c\x94'; // HEAVY CHECK MARK
+const ICON_BAD = '\xe2\x9c\x98'; // HEAVY BALLOT X
+
 export type Task$ActionUpdater = (action: string) => void;
 export type Task$Executor = (updateAction: Task$ActionUpdater) => Promise;
 
@@ -64,7 +69,7 @@ class Task {
             const completeFn = once(() => { this.isRunning = false; subject.complete(); });
             const updateAction:Task$ActionUpdater = (val) => { subject.next(val); }
             if (this.name) {
-                console.log(`>> ${this.name}`);
+                debug(`>> ${this.name}`);
             }
             let promise;
             try {
@@ -75,6 +80,12 @@ class Task {
             }
             if (isPromise(promise)) {
                 promise.then(completeFn, errorFn);
+                // Logging
+                if (this.name) {
+                    Promise.resolve(promise)
+                        .tap(() => debug(`${ICON_GOOD} ${this.name}`))
+                        .tapCatch(() => debug(`${ICON_BAD} ${this.name}`));
+                }
                 // TODO: append to the TaskTrace before calling errorFn()
             } else completeFn();
         }
