@@ -1,6 +1,6 @@
 {
   "name": "tasks.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A declarative, test-driven framework for organizing what you're doing - written in Node.js",
   "main": "lib/index.js",
   "author": "Connor Grady <conair360@gmail.com> (http://connorgrady.com/)",
