@@ -5,22 +5,22 @@
  * @flow
  */
 
-import Promise from 'bluebird'
-import isPromise from '@itsjustcon/utils/isPromise'
-//import once from '@itsjustcon/utils/once'
-import once from 'lodash/once'
-import { Observable } from 'rxjs/Observable'
-import { Subject } from 'rxjs/Subject'
-import { $$rxSubscriber } from 'rxjs/symbol/rxSubscriber'
+import Promise from 'bluebird';
+import isPromise from '@itsjustcon/utils/isPromise';
+//import once from '@itsjustcon/utils/once';
+import once from 'lodash/once';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { $$rxSubscriber } from 'rxjs/symbol/rxSubscriber';
 
-import TaskError from './TaskError'
+import TaskError from './TaskError';
 
-export type Task$ActionUpdater = (action: string) => void
-export type Task$Executor = (updateAction: Task$ActionUpdater) => Promise
+export type Task$ActionUpdater = (action: string) => void;
+export type Task$Executor = (updateAction: Task$ActionUpdater) => Promise;
 
 export type Task$options = {
     log: boolean, // default: false
-}
+};
 
 
 

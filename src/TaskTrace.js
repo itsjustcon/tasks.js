@@ -5,7 +5,7 @@
  * @flow
  */
 
-import Task from './Task'
+import Task from './Task';
 
 class TaskTrace {}
 

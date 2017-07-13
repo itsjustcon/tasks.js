@@ -5,12 +5,12 @@
  * @flow
  */
 
-//import Rx from '@reactivex/rxjs'
+//import Rx from '@reactivex/rxjs';
 
-import Task from './Task'
-import TaskError from './TaskError'
+import Task from './Task';
+import TaskError from './TaskError';
 
-import type { Task$Executor, Task$options } from './Task'
+import type { Task$Executor, Task$options } from './Task';
 
 export type TaskQueue$options = Task$options & {
     concurrency: number, // default: 1

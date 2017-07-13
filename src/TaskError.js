@@ -5,8 +5,8 @@
  * @flow
  */
 
-import Task from './Task'
-import TaskTrace from './TaskTrace'
+import Task from './Task';
+import TaskTrace from './TaskTrace';
 
 class TaskError extends Error {}
 
